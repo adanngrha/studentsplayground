@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Write or Ask
+{% endblock %}
+
+{% block main %}
+    <!-- Content -->
+        <div class="container">
+            <div class="p-md-5 mb-4 text-white rounded text-center">
+                <div class="px-0">
+                <h6 class="display-6 fst-italic">Write or Ask Something.</h6>
+                </div>
+            </div>
+
+            <form action="/writing" method="post" class="text-white">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="title" placeholder="Title for your article or question">
+                </div>
+                <div class="mb-3">
+                    <label for="short-description" class="form-label">Short Description</label>
+                    <textarea class="form-control" id="short-description" rows="3"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="content" class="form-label">Content</label>
+                    <textarea class="form-control" id="content" rows="3"></textarea>
+                </div>  
+
+                <div>
+                    <button class="btn  btn-outline-light me-2 profile-button" type="submit">Post</button>
+                </div>
+            </form>
+        </div>
+    <!-- Content -->
+{% endblock %}

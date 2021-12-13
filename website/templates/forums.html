@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Forums
+{% endblock %}
+
+{% block main %}
+    <!-- Content -->
+        <div class="container">
+            <div class="p-md-5 mb-4 text-white rounded text-center">
+                <div class="px-0">
+                <h1 class="display-4 fst-italic">Welcome to Forums.</h1>
+                <p class="lead my-3">Here, you can discuss about your students life with Others.</p>
+                </div>
+            </div>
+
+            <div class="row mb-2 text-white">
+                <div class="col-md-6">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2">Written by blablabla</strong>
+                    <h3 class="mb-0">Here some tips how i get into Harvard so easily.</h3>
+                    <div class="mb-1 text-muted">Nov 12</div>
+                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                    <a href="/forum-detail" class="stretched-link">Continue reading</a>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-6">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2">Question by blablabla</strong>
+                    <h3 class="mb-0">How you guys grade A students study?</h3>
+                    <div class="mb-1 text-muted">Nov 11</div>
+                    <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                    <a href="/forum-detail" class="stretched-link">Continue reading</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="col-md-5 p-lg-5 mx-auto my-5 text-center text-white">
+                <a class="btn btn-outline-light me-2" href="/writing">Write or Ask something</a>
+            </div>
+        </div>
+    <!-- Content -->
+{% endblock %}

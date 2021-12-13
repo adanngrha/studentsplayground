@@ -1,0 +1,162 @@
+body {
+    background-color: black;
+    margin: 0;
+    text-decoration: none;
+    font-family: 'Oswald';
+    font-size: 22px;
+}
+
+header {
+    background-color: black;
+}
+
+.theS-logo {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 60px;
+    width: 60px;
+}
+
+.nav {
+    padding-top: 8px;
+}
+
+.right-button {
+    padding-top: 8px;
+}
+
+main {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.apology img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.index-logo {
+    width: 200px;
+    height: 200px;
+}
+
+h5 {
+    letter-spacing: 1px;
+}
+
+/* Profile */
+.labels {
+    font-size: 14px
+}
+/* Profile */
+
+/* Markets */
+.product-device {
+    position: absolute;
+    right: 10%;
+    bottom: -30%;
+    width: 300px;
+    height: 540px;
+    background-color: grey;
+    border-radius: 21px;
+    transform: rotate(30deg);
+}
+
+.product-device::before {
+    position: absolute;
+    top: 10%;
+    right: 10px;
+    bottom: 10%;
+    left: 10px;
+    content: "";
+    background-color: rgba(255, 255, 255, .1);
+    border-radius: 5px;
+}
+
+.product-device-2 {
+    top: -25%;
+    right: auto;
+    bottom: 0;
+    left: 5%;
+    background-color: gray;
+}
+/* Markets */
+
+.dots {
+    height: 4px;
+    width: 4px;
+    margin-bottom: 2px;
+    border-radius: 50%;
+    display: inline-block
+}
+
+.badge {
+    padding: 7px;
+    padding-right: 9px;
+    padding-left: 16px;
+}
+
+.user-img {
+    margin-top: 4px
+}
+
+.check-icon {
+    font-size: 17px;
+    top: 1px;
+    position: relative;
+    margin-left: 3px
+}
+
+.form-check-input {
+    margin-top: 6px;
+    margin-left: -24px !important;
+    cursor: pointer
+}
+
+.form-check-input:focus {
+    box-shadow: none
+}
+
+.icons i {
+    margin-left: 8px
+}
+
+
+
+/*
+  Extra utilities
+ */
+
+.flex-equal>* {
+    flex: 1;
+}
+
+@media (min-width: 768px) {
+    .flex-md-equal>* {
+        flex: 1;
+    }
+}
+
+.products {
+    padding-bottom: 100px;
+}
+
+.products img {
+    height: 150px;
+    width: 150px;
+}
+
+@media screen and (max-width: 480px) {
+  header {
+      padding-bottom: 40px;
+  }
+
+  main {
+      padding-top: 100px;
+  }
+
+  .index-logo {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}

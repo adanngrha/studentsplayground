@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <!-- Content -->
+      <section class="sign-in text-white">
+        <div class="container">
+          <div class="row d-flex justify-content-center align-items-center">
+            <div class="col col-xl-10">
+                <div class="row g-0">
+                  
+                  <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                    <div class="card-body text-white">
+                      <!-- Form -->
+                      <form action="/register" method="post">
+                        <div class="d-flex align-items-center mb-3 pb-1">
+                          <span class="h1 fw-bold mb-0">studentsplayground</span>
+                        </div>
+
+                        <h5 class="fw-normal mb-3 pb-3">Join Us! Register for an account</h5>
+
+                        <div class="form-outline mb-4">
+                          <label class="form-label" for="username-register">Username</label>
+                          <input type="text" id="username-register" class="form-control form-control-lg" name="username"/>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                          <label class="form-label" for="password-register">Password</label>
+                          <input type="password" id="password-register" class="form-control form-control-lg" name="password"/>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                          <label class="form-label" for="confirmation">Password(Again)</label>
+                          <input type="password" id="confirmation" class="form-control form-control-lg" name="confirmation"/>
+                        </div>
+
+                        <div class="pt-1 mb-4">
+                          <button class="btn btn-light btn-lg btn-block" type="submit">Register</button>
+                        </div>
+                        </form>
+                        <!-- Form -->
+                      <p class="mb-5 pb-lg-2" >Already have an account?<a href="/login">  Login here</a></p>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-lg-5 d-none d-md-block">
+                    <img
+                      src="../static/img/register-students.png"
+                      alt="register form"
+                      class="img-fluid justify-content-center align-content-center"
+                    />
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <!-- Content -->
+{% endblock %}

@@ -28,6 +28,5 @@ class Users(db.Model, UserMixin):
     major = db.Column(db.String(255))
     university = db.Column(db.String(255))
     bio = db.Column(db.Text)
-    cash = db.Column(db.Integer, default=1000000)
     forums = db.relationship('Forums')
     comments = db.relationship('Comments')

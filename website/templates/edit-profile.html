@@ -11,7 +11,7 @@
                 <div class="col-md-4 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                         <img alt="" class="rounded-circle mt-5" width="150px" src="../static/img/discord.png">
-                            <span class="font-weight-bold">Edogaru</span>
+                            <span class="font-weight-bold">{{users.username}}</span>
                     </div>
                 </div>
                 <div class="col-md-8 border-right">
@@ -24,19 +24,19 @@
                                 <div class="row mt-3">
                                 <div class="col-md-12">
                                     <label class="labels">Fullname</label>
-                                    <input type="text" class="form-control" placeholder="{}" value="">
+                                    <input type="text" class="form-control" placeholder="{{users.fullname}}" name="fullname">
                                 </div>
                                 <div class="col-md-12">
                                     <label class="labels">Major</label>
-                                    <input type="text" class="form-control" placeholder="{}" value="">
+                                    <input type="text" class="form-control" placeholder="{{users.major}}" name="major">
                                 </div>
                                 <div class="col-md-12">
                                     <label class="labels">University</label>
-                                    <input type="text" class="form-control" placeholder="{}" value="">
+                                    <input type="text" class="form-control" placeholder="{{users.university}}" name="university">
                                 </div>
                                 <div class="col-md-12">
                                     <label class="labels">Bio</label>
-                                    <input type="text" class="form-control" placeholder="{}" value="">
+                                    <input type="text" class="form-control" placeholder="{{users.bio}}" name="bio">
                                 </div>
                                 </div>
                             </div>

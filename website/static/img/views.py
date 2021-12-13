@@ -7,10 +7,8 @@ from . import db
 
 views = Blueprint('views', __name__)
 
-
 @views.route('/')
 def index():
-    
     return render_template("index.html", user = current_user)
 
 @views.route('/profile')

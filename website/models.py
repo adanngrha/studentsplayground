@@ -9,7 +9,7 @@ class Forums(db.Model):
     question_or_title = db.Column(db.String(255))
     description_or_content = db.Column(db.Text)
     date = db.Column(db.DateTime(timezone=True), default=func.now())
-    comment = db.relationship('Comment')
+    comment = db.relationship('Comments')
            
     
 class Comments(db.Model):
@@ -29,5 +29,5 @@ class Users(db.Model, UserMixin):
     university = db.Column(db.String(255))
     bio = db.Column(db.Text)
     cash = db.Column(db.Integer, default=1000000)
-    forums = db.relationship('Forum')
-    comments = db.relationship('Comment')
+    forums = db.relationship('Forums')
+    comments = db.relationship('Comments')

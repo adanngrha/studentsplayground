@@ -1,6 +1,7 @@
 import re
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
+from sqlalchemy.sql.expression import all_
 from sqlalchemy.sql.functions import user
 from werkzeug.utils import redirect
 
@@ -54,15 +55,24 @@ def edit_profile():
 @views.route('/forums')
 @login_required
 def forums():
+    all_forums = Forums.query.all()
     
-    return render_template("forums.html", user=current_user)
+    return render_template("forums.html", user=current_user, forums=all_forums)
 
 
 @views.route('/writing', methods=['GET', 'POST'])
 @login_required
 def writing():
     if request.method == "POST":
-        return redirect('profile')
+    
+        user_id = current_user.id    
+        title = request.form.get('title')
+        description = request.form.get('short-description')
+        content = request.form.get('content')
+        new_forum = Forums(questioner_or_writer_id=user_id, question_or_title=title, description=description, content=content)
+        db.session.add(new_forum)
+        db.session.commit()  
+        return redirect('forums')
     
     return render_template("writing.html", user=current_user)
 
@@ -70,9 +80,13 @@ def writing():
 @views.route('/forum-detail')
 @login_required
 def forum_detail():
+    forum_title = request.form.get('title')
+    forum = Forums.query.filter_by(question_or_title=forum_title).first()
+    print(forum)
+    forum_id = forum.id
+    comments = Comments.query.filter_by(forum_id=forum_id).all()
     
-    
-    return render_template("forum-detail.html", user=current_user)
+    return render_template("forum-detail.html", user=current_user, forum=forum, comments=comments)
 
 
 @views.route('/comment', methods=['POST'])

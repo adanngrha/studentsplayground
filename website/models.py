@@ -7,7 +7,8 @@ class Forums(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     questioner_or_writer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     question_or_title = db.Column(db.String(255))
-    description_or_content = db.Column(db.Text)
+    description = db.Column(db.String(255))
+    content = db.Column(db.Text)
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     comment = db.relationship('Comments')
            

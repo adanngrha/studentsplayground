@@ -1,5 +1,6 @@
 import re
 from flask import Blueprint, render_template, request, flash, jsonify
+from flask.helpers import url_for
 from flask_login import login_required, current_user
 from sqlalchemy.sql.expression import all_
 from sqlalchemy.sql.functions import user
@@ -77,51 +78,22 @@ def writing():
     return render_template("writing.html", user=current_user)
 
 
-@views.route('/forum-detail')
+
+@views.route('/forum-detail/<id>')
 @login_required
-def forum_detail():
-    forum_title = request.form.get('title')
-    forum = Forums.query.filter_by(question_or_title=forum_title).first()
-    print(forum)
+def forum_detail(id):
+    forum = Forums.query.filter_by(id=id).first()
     forum_id = forum.id
     comments = Comments.query.filter_by(forum_id=forum_id).all()
-    
     return render_template("forum-detail.html", user=current_user, forum=forum, comments=comments)
 
 
-@views.route('/comment', methods=['POST'])
+@views.route('/comment/<forumID>', methods=['POST'])
 @login_required
-def comment():
-    flash("Commented", category='success')
-
-
-"""
-@views.route('/', methods=['GET', 'POST'])
-@login_required
-def home():
-    if request.method == 'POST':
-        note = request.form.get('note')
-
-        if len(note) < 1:
-            flash('Note is too short!', category='error')
-        else:
-            new_note = Note(data=note, user_id=current_user.id)
-            db.session.add(new_note)
-            db.session.commit()
-            flash('Note added!', category='success')
-
-    return render_template("home.html", user=current_user)
-
-
-@views.route('/delete-note', methods=['POST'])
-def delete_note():
-    note = json.loads(request.data)
-    noteId = note['noteId']
-    note = Note.query.get(noteId)
-    if note:
-        if note.user_id == current_user.id:
-            db.session.delete(note)
-            db.session.commit()
-
-    return jsonify({})
-"""
+def comment(forumID):
+    comment = request.form.get('comment')
+    comments = Comments(comment=comment, forum_id=forumID, commenter_id=current_user.id)
+    db.session.add(comments)
+    db.session.commit()
+    
+    return redirect(url_for('views.forum_detail', id=forumID))

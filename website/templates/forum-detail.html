@@ -9,8 +9,8 @@
         <section class="article text-white text-center">
             <div class="p-5 mb-4 rounded-3">
                 <div class="container-fluid py-5">
-                    <h1 class="display-5 fw-bold">Custom jumbotron</h1>
-                    <p class="fs-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit temporibus nam quis delectus eum quidem culpa ab repellat excepturi praesentium. Tempora nostrum dignissimos asperiores voluptates doloribus, corporis reprehenderit sapiente praesentium? Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
+                    <h1 class="display-5 fw-bold">{{ forum.question_or_title }}</h1>
+                    <p class="fs-4">{{ forum.content }}</p>
                 </div>
             </div>
         </section>
@@ -43,10 +43,10 @@
         </section>
 
         <section class="input-comment container text-center col-md-8 pt-5">
-            <form action="/forum-detail" method="post" class="text-white">
+            <form action="/comment/{{forum.id}}" method="post" class="text-white">
                 <div class="mb-3 ">
                     <label for="comment" class="form-label">Write a comment</label>
-                    <textarea class="form-control" id="comment" rows="3"></textarea>
+                    <textarea class="form-control" id="comment" rows="3" name="comment"></textarea>
                 </div>  
 
                 <div>

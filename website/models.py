@@ -1,3 +1,4 @@
+from sqlalchemy.orm import backref
 from . import db
 from flask_login import UserMixin
 from sqlalchemy.sql import func
@@ -11,7 +12,6 @@ class Forums(db.Model):
     content = db.Column(db.Text)
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     comment = db.relationship('Comments')
-           
     
 class Comments(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -29,5 +29,5 @@ class Users(db.Model, UserMixin):
     major = db.Column(db.String(255))
     university = db.Column(db.String(255))
     bio = db.Column(db.Text)
-    forums = db.relationship('Forums')
-    comments = db.relationship('Comments')
+    forums = db.relationship('Forums', backref='users')
+    comments = db.relationship('Comments', backref='users')

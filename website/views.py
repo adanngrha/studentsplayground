@@ -2,6 +2,8 @@ import re
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask.helpers import url_for
 from flask_login import login_required, current_user
+import sqlalchemy
+from sqlalchemy.orm.session import Session
 from sqlalchemy.sql.expression import all_
 from sqlalchemy.sql.functions import user
 from werkzeug.utils import redirect
@@ -56,8 +58,12 @@ def edit_profile():
 @views.route('/forums')
 @login_required
 def forums():
-    all_forums = Forums.query.all()
-    
+    # Query joining two tables
+    all_forums = db.session.query(Users.id, Users.username, Forums.id, Forums.question_or_title, Forums.questioner_or_writer_id, Forums.description, Forums.content, Forums.date).\
+        select_from(Users).join(Forums).all()
+    for forum in all_forums:
+        print(forum)
+        
     return render_template("forums.html", user=current_user, forums=all_forums)
 
 
@@ -84,7 +90,8 @@ def writing():
 def forum_detail(id):
     forum = Forums.query.filter_by(id=id).first()
     forum_id = forum.id
-    comments = Comments.query.filter_by(forum_id=forum_id).all()
+    comments = db.session.query(Users.id, Users.username, Comments.comment, Comments.forum_id, Comments.date, Forums.id).\
+        select_from(Forums).join(Comments).join(Users).filter(Forums.id==forum_id).all()
     return render_template("forum-detail.html", user=current_user, forum=forum, comments=comments)
 
 
